@@ -1,16 +1,15 @@
-# core/vector_store.py
 import os
-os.environ['HF_ENDPOINT'] = 'https://hf-mirror.com'   # RAG 踩过的坑，带上
+os.environ['HF_ENDPOINT'] = 'https://hf-mirror.com'
 
 from langchain_chroma import Chroma
 from langchain_core.documents import Document
 from sentence_transformers import CrossEncoder
 from config.settings import settings
-from core.model import get_embed_model   # ← 唯一升级：embeddings 走 model 层
+from core.model import get_embed_model
 
 class VectorStoreService:
     def __init__(self):
-        self.embeddings = get_embed_model()   # ← 不再自己 OpenAIEmbeddings(...)
+        self.embeddings = get_embed_model()
         self.chroma = Chroma(
             persist_directory=settings.CHROMA_PERSIST_DIR,
             collection_name=settings.CHROMA_COLLECTION_NAME,
