@@ -17,6 +17,7 @@ class Settings(BaseSettings):
     EXTERNAL_DATA_PATH: str = Field(default="data/external_data.csv")
     SYSTEM_PROMPT_PATH: str = Field(default="prompts/system.txt")
     REPORT_PROMPT_PATH: str = Field(default="prompts/report.txt")
+    RAG_PROMPT_PATH: str = Field(default="prompts/rag.txt")
 
     model_config = SettingsConfigDict(env_file=".env", env_file_encoding="utf-8")
 
